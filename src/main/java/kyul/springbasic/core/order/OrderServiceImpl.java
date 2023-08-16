@@ -6,7 +6,10 @@ import kyul.springbasic.core.discount.RateDiscountPolicy;
 import kyul.springbasic.core.member.Member;
 import kyul.springbasic.core.member.MemberRepository;
 import kyul.springbasic.core.member.MemoryMemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class OrderServiceImpl implements OrderService{
 
 
@@ -23,6 +26,7 @@ public class OrderServiceImpl implements OrderService{
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
+    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
