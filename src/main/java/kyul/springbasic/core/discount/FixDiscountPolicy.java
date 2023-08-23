@@ -2,7 +2,10 @@ package kyul.springbasic.core.discount;
 
 import kyul.springbasic.core.member.Grade;
 import kyul.springbasic.core.member.Member;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
+@Component
 public class FixDiscountPolicy implements DiscountPolicy{
 
     private int discountFixAmount = 1000; // 고정 1000원 할인

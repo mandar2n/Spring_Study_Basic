@@ -1,17 +1,20 @@
 package kyul.springbasic.core.order;
 
+import kyul.springbasic.core.annotation.MainDiscountPolicy;
 import kyul.springbasic.core.discount.DiscountPolicy;
 import kyul.springbasic.core.discount.FixDiscountPolicy;
 import kyul.springbasic.core.discount.RateDiscountPolicy;
 import kyul.springbasic.core.member.Member;
 import kyul.springbasic.core.member.MemberRepository;
 import kyul.springbasic.core.member.MemoryMemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
+//@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService{
-
 
 /*  DIP 위반 사항
 
@@ -26,11 +29,22 @@ public class OrderServiceImpl implements OrderService{
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
-    @Autowired //생성자 1개일 때는 없어도 그만
-    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
-        System.out.println("memberRepository = " + memberRepository);
-        System.out.println("discountPolicy = " + discountPolicy);
+/*
+    //수정자 주입
+    @Autowired
+    public void setMemberRepository(MemberRepository memberRepository){
+        this.memberRepository = memberRepository;
+    }
 
+    @Autowired
+    public void setDiscountPolicy(DiscountPolicy discountPolicy) {
+        this.discountPolicy = discountPolicy;
+    }
+*/
+  //롬복이 그냥 만들어줌
+    //생성자 주입
+    @Autowired //생성자 1개일 때는 없어도 그만
+    public OrderServiceImpl(MemberRepository memberRepository, @MainDiscountPolicy DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
