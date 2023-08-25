@@ -2,6 +2,7 @@ package kyul.springbasic.core.web;
 
 import kyul.springbasic.core.common.MyLogger;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.stereotype.Service;
 
 @Service
